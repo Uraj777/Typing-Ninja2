@@ -7,7 +7,7 @@ It features sound effects, a custom font, and difficulty modes for a fun learnin
  Features
 - 🧠 Three difficulty levels: Easy, Medium, Hard  
 - 🔊 Sound effects and background music  
-- 🎨 Custom font (Robus) and visuals  
+- 🎨 Custom font (Techno Race Italic) and visuals  
 - ⚡ Real-time word generation and typing accuracy tracking  
 
  How to Play
@@ -20,5 +20,6 @@ It features sound effects, a custom font, and difficulty modes for a fun learnin
 3.Type the words as they appear on screen before time runs out
 
 4.Try to beat your high score!
+
 
 
