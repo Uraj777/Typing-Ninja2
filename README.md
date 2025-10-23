@@ -16,6 +16,9 @@ It features sound effects, a custom font, and difficulty modes for a fun learnin
    python code_1.py
 
 2.Select your difficulty level
+
 3.Type the words as they appear on screen before time runs out
+
 4.Try to beat your high score!
+
 
