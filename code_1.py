@@ -16,7 +16,13 @@ THEME_MUSIC_FILE = "theme_music.mp3"
 
 
 pygame.init()
-pygame.mixer.init()
+# Initialize mixer with fallback for systems without audio devices
+try:
+    pygame.mixer.init()
+    AUDIO_ENABLED = True
+except pygame.error:
+    print("Warning: Audio device not available. Running without sound.")
+    AUDIO_ENABLED = False
 
 # Screen Setup 
 WIDTH, HEIGHT = 900, 600
@@ -93,21 +99,26 @@ def load_background(path):
 BACKGROUND_IMG = load_background(BACKGROUND_FILE)
 
 # --- Music and Sounds ---
-try:
-    correct_sound = pygame.mixer.Sound(CORRECT_SOUND_FILE)
-except:
-    correct_sound = pygame.mixer.Sound(buffer=bytearray([128] * 1000))
-    
-try:
-    blip_sound = pygame.mixer.Sound(BLIP_SOUND_FILE)
-except:
-    blip_sound = pygame.mixer.Sound(buffer=bytearray([128] * 1000))
+if AUDIO_ENABLED:
+    try:
+        correct_sound = pygame.mixer.Sound(CORRECT_SOUND_FILE)
+    except:
+        correct_sound = pygame.mixer.Sound(buffer=bytearray([128] * 1000))
+        
+    try:
+        blip_sound = pygame.mixer.Sound(BLIP_SOUND_FILE)
+    except:
+        blip_sound = pygame.mixer.Sound(buffer=bytearray([128] * 1000))
 
-try:
-    pygame.mixer.music.load(THEME_MUSIC_FILE)
-    pygame.mixer.music.play(-1)
-except pygame.error:
-    print(f"Warning: Could not load {THEME_MUSIC_FILE}. No background music.")
+    try:
+        pygame.mixer.music.load(THEME_MUSIC_FILE)
+        pygame.mixer.music.play(-1)
+    except pygame.error:
+        print(f"Warning: Could not load {THEME_MUSIC_FILE}. No background music.")
+else:
+    # Create dummy sounds
+    correct_sound = pygame.mixer.Sound(buffer=bytearray([128] * 1000))
+    blip_sound = pygame.mixer.Sound(buffer=bytearray([128] * 1000))
     
 
 # --- Word Lists (No Change) ---
